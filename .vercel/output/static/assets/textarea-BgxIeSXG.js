@@ -1,0 +1,1 @@
+import{B as e,X as t,u as n}from"./command-f5tQwGnF.js";t();var r=e();function i({className:e,...t}){return(0,r.jsx)(`textarea`,{className:n(`flex min-h-32 w-full rounded-lg border border-border bg-surface px-3 py-2.5 text-sm text-fg placeholder:text-faint outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent/70`,e),...t})}export{i as t};

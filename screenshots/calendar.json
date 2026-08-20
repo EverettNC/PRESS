@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:8080/calendar",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 4143,
+      "bodyTextHash": "e124e2613d180bc26beddeee4cecebffe048dd3200c0a3ef72fc0afaef114707",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN · NO GATE Briefing Dossier Li",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/calendar.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 4058,
+      "bodyTextHash": "e654f59c7e7c7e99a882a8cbe255a48840598b2d2fc3834651b953fe24d13c15",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN CALENDAR · ALREADY LOADED FRO",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/calendar-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "verdictFile": "/workspace/screenshots/calendar.json"
+}

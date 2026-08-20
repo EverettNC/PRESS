@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:8080/dossier",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 6950,
+      "bodyTextHash": "c90a63f12b66a6e2c4536e003bed38e55ec088c32cd6b33dc438eb599133b3bf",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN · NO GATE Briefing Dossier Li",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/dossier.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 6865,
+      "bodyTextHash": "e16de7ff686cf3288801d48bccdde7941762ddcfc21efd126f2abf81c295a251",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN DOSSIER · LOCKED TO YOU Who y",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/dossier-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "verdictFile": "/workspace/screenshots/dossier.json"
+}

@@ -1,0 +1,35 @@
+{
+  "url": "http://127.0.0.1:8080/desk",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 829,
+      "bodyTextHash": "7e32237f54c95dafba70c037f2841b0b684154292242f14c6fce676349d7e528",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN · NO GATE Briefing Dossier Li",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/desk.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 744,
+      "bodyTextHash": "8d65cc183e0f6574589cb8f17112a060d6c4a953aecf561c9dc379ef9f274029",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN DESK · ALREADY BRIEFED ON YOU",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/desk-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "verdictFile": "/workspace/screenshots/desk.json"
+}

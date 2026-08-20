@@ -1,0 +1,39 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 2789,
+      "bodyTextHash": "31638c9f9e12bd49abe049c568c651e9de0de2bb4c8c23fb1b65bfae5ef2a70f",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN · NO GATE Briefing Dossier Li",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Christman Command",
+      "hasCanvas": false,
+      "bodyTextLen": 1592,
+      "bodyTextHash": "b02a6f3a1e46e0cef6f1b58096bd9ffd2bb9de48af67bdd04267b7636467319c",
+      "bodyTextPrefix": "Christman Command YOURS · NO LOGIN WEDNESDAY 19 AUG 2026 · RECON",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: body text changed (1414 -> 2789 chars, hash mismatch)"
+  ]
+}
