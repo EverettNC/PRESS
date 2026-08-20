@@ -311,7 +311,7 @@ export const generatePack = createServerFn({ method: "POST" })
       thread: "an X thread of 5–7 posts, each able to stand alone, numbered",
       reply: "a quote-tweet / reply designed to enter someone else's X room",
       facebook:
-        "a Facebook post for Chef.Ev's 4.3k. Talk like a person in the comments, not a company page. Native video caption. You may use his actual line: the biggest company in the world just said hello to my country ass. Do NOT write a childhood origin story.",
+        "a Facebook post for The Christman AI Project page. Native video caption. The work, not a childhood origin. You may use his actual line if it fits: the biggest company in the world just said hello to my country ass.",
       linkedin:
         "a LinkedIn founder letter about the WORK, not the childhood. No corporate theater. One ask for a warm introduction. Do not open with nonverbal / school / pity.",
       tiktok:

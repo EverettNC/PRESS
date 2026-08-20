@@ -1,21 +1,12 @@
 export const CHANNELS = [
   {
     id: "facebook-chef",
-    name: "Facebook · Chef.Ev",
-    handle: "Chef.Ev",
-    href: "https://www.facebook.com/Chef.Ev/",
-    size: "4.3k",
-    role: "Warm room. Largest audience. People who already know Everett.",
-    play: "Native video. Talk in comments. This is home base, not a cross-post dump.",
-  },
-  {
-    id: "facebook-page",
-    name: "Facebook · Project",
+    name: "Facebook",
     handle: "TheChristmanAIProject",
     href: "https://www.facebook.com/TheChristmanAIProject/",
-    size: "2.0k",
-    role: "Company page. Dementia, veterans, nonverbal families.",
-    play: "Same news as Chef.Ev, shorter, then send people to the personal post to talk.",
+    size: "1.9k",
+    role: "Project page. AlphaVox, Inferno, the work.",
+    play: "Native video. Caption is the work. Not a kitchen cross-post.",
   },
   {
     id: "linkedin",

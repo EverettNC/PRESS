@@ -38,7 +38,7 @@ function DossierPage() {
         <h1 className="font-serif text-4xl tracking-tight">Who you are.</h1>
         <p className="max-w-2xl text-muted">
           {OWNER.founder}, {OWNER.role}. {OWNER.legal}, operating as{" "}
-          {OWNER.operatingAs}. {OWNER.location}. Chef Ev. {OWNER.handle}.
+          {OWNER.operatingAs}. {OWNER.location}. {OWNER.handle}.
         </p>
       </header>
 
@@ -49,7 +49,7 @@ function DossierPage() {
       </div>
 
       <section className="grid gap-3 sm:grid-cols-2">
-        <Meta label="Facebook" value="Chef.Ev · 4.3k" href={OWNER.facebook} />
+        <Meta label="Facebook" value="TheChristmanAIProject · 1.9k" href={OWNER.facebookPage} />
         <Meta label="Facebook page" value="TheChristmanAIProject" href={OWNER.facebookPage} />
         <Meta label="LinkedIn" value="thechristmanaiproject" href={OWNER.linkedin} />
         <Meta label="TikTok" value="@Chef_Ev" href={OWNER.tiktok} />

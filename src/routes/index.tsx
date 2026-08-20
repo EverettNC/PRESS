@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { CopyButton } from "@/components/copy-button";
+import { PushBar } from "@/components/push-bar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ALPHAVOX_PUSH } from "@/lib/brand/alphavox-push";
 import { CHANNEL } from "@/lib/brand/youtube";
 import { deleteLibraryItem, loadDesk } from "@/lib/server/command";
 import { useDesk, useInvalidateDesk } from "@/lib/use-desk";
@@ -24,24 +26,59 @@ function Briefing() {
     <div className="space-y-6 sm:space-y-10">
       <header className="space-y-3">
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-faint">
-          Watched the channel · {CHANNEL.subs} · {CHANNEL.videos} videos
+          Christman Command · the job is push
         </p>
         <h1 className="font-serif text-3xl leading-[1.05] tracking-tight sm:text-5xl">
-          I watched @TheChristmanAIProject.
+          Push AlphaVox.
         </h1>
-        <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-          Inferno is 18 minutes and 13 views. The song from 2024 has 220. Old
-          Chef Ev still beats the new walkthrough. Delete whatever isn’t you.
+        <p className="hidden max-w-2xl text-sm leading-relaxed text-muted sm:block sm:text-base">
+          Promo video is the job. File was too big to drop here — upload it,
+          then hit a room. Caption is copied. Composer opens. You publish.
         </p>
-        <Button asChild variant="outline">
-          <a href={CHANNEL.href} target="_blank" rel="noreferrer">
-            Open the channel
-          </a>
-        </Button>
       </header>
 
+      <section className="rounded-xl border border-signal/40 bg-signal/10 p-4 sm:p-6">
+        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-signal">
+          AlphaVox · push now
+        </p>
+        <h2 className="mt-2 font-serif text-2xl sm:text-3xl">
+          {ALPHAVOX_PUSH.youtubeTitle}
+        </h2>
+        <p className="mt-2 text-sm text-muted">
+          32 seconds. Start the upload at 0:01 — first frame is mid-sentence.
+          Facebook is TheChristmanAIProject. Attach the file and publish.
+        </p>
+        <pre className="mt-4 whitespace-pre-wrap font-sans text-sm leading-relaxed text-fg">
+          {ALPHAVOX_PUSH.facebook}
+        </pre>
+        <div className="mt-4">
+          <PushBar
+            text={ALPHAVOX_PUSH.facebook}
+            url={ALPHAVOX_PUSH.site}
+            platform="facebook"
+          />
+        </div>
+      </section>
+
+      <section className="grid gap-3 sm:grid-cols-2">
+        <PackCard
+          room="YouTube title"
+          body={ALPHAVOX_PUSH.youtubeTitle}
+          platform="youtube"
+        />
+        <PackCard
+          room="YouTube description"
+          body={ALPHAVOX_PUSH.youtubeDescription}
+          platform="youtube"
+        />
+        <PackCard room="TikTok / Reels" body={ALPHAVOX_PUSH.tiktok} platform="tiktok" />
+        <PackCard room="Instagram" body={ALPHAVOX_PUSH.instagram} platform="instagram" />
+        <PackCard room="LinkedIn" body={ALPHAVOX_PUSH.linkedin} platform="linkedin" />
+        <PackCard room="X" body={ALPHAVOX_PUSH.x} platform="x" />
+      </section>
+
       <section className="space-y-4">
-        <h2 className="font-serif text-2xl">YouTube</h2>
+        <h2 className="font-serif text-2xl">YouTube · {CHANNEL.subs}</h2>
         <ul className="space-y-4">
           {youtube.map((item) => (
             <ItemCard
@@ -77,6 +114,26 @@ function Briefing() {
   );
 }
 
+function PackCard({
+  room,
+  body,
+  platform,
+}: {
+  room: string;
+  body: string;
+  platform: string;
+}) {
+  return (
+    <article className="rounded-xl border border-border bg-surface p-4">
+      <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-faint">{room}</p>
+      <pre className="mt-3 whitespace-pre-wrap font-sans text-sm leading-relaxed">{body}</pre>
+      <div className="mt-4">
+        <PushBar text={body} url={ALPHAVOX_PUSH.site} platform={platform} />
+      </div>
+    </article>
+  );
+}
+
 function ItemCard({
   item,
   onDelete,
@@ -107,29 +164,30 @@ function ItemCard({
         {item.body}
       </pre>
       {item.diagnosis ? <p className="mt-3 text-sm text-muted">{item.diagnosis}</p> : null}
-      <div className="mt-4 flex flex-wrap gap-2">
-        <CopyButton text={item.body} label="Copy" />
-        <Button asChild variant="outline">
-          <Link
-            to="/studio"
-            search={{
-              source: item.id,
-              kind: item.platform === "youtube" ? "tiktok" : item.platform === "facebook" ? "facebook" : "short",
-            }}
-          >
-            Recut
-          </Link>
-        </Button>
-        {item.url ? (
+      <div className="mt-4 space-y-3">
+        <PushBar text={item.body} url={item.url} platform={item.platform} />
+        <div className="flex flex-wrap gap-2">
+          <CopyButton text={item.body} label="Copy only" />
           <Button asChild variant="outline">
-            <a href={item.url} target="_blank" rel="noreferrer">
-              Open
-            </a>
+            <Link
+              to="/studio"
+              search={{
+                source: item.id,
+                kind:
+                  item.platform === "youtube"
+                    ? "tiktok"
+                    : item.platform === "facebook"
+                      ? "facebook"
+                      : "short",
+              }}
+            >
+              Recut first
+            </Link>
           </Button>
-        ) : null}
-        <Button type="button" variant="ghost" onClick={() => void onDelete()}>
-          Delete
-        </Button>
+          <Button type="button" variant="ghost" onClick={() => void onDelete()}>
+            Delete
+          </Button>
+        </div>
       </div>
     </li>
   );

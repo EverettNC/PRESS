@@ -72,18 +72,43 @@ Dignity first. How can we help you love yourself more?`,
   {
     id: "fb-page-nvidia",
     platform: "facebook",
-    title: "NVIDIA Inception — project page",
+    title: "NVIDIA Inception — Facebook",
     body: `Thank you, NVIDIA, for seeing the vision and backing the reality of what we are building.
 
 The Christman AI Project has officially been accepted into the NVIDIA Inception Program.
 
-How can we help you love yourself more?`,
-    url: "https://www.facebook.com/TheChristmanAIProject/",
+"How can we help you love yourself more?"`,
+    url: "https://www.facebook.com/TheChristmanAIProject/posts/1660941639374789/",
     postedAt: "2026-08-15",
     views: 0,
-    likes: 0,
+    likes: 5,
     reposts: 0,
-    diagnosis: "Company page. Point this at Chef.Ev. Do not run two comment threads.",
+    diagnosis: "5 likes. 0 comments. The page is 1.9k. The video still needs a first comment from him.",
+  },
+  {
+    id: "fb-alphavox-live",
+    platform: "facebook",
+    title: "It's here folks — AlphaVox goes live",
+    body: `It's here folks stay tuned AlphaVox goes live.`,
+    url: "https://www.facebook.com/TheChristmanAIProject/posts/1586768550125432/",
+    postedAt: "2026-05-30",
+    views: 0,
+    likes: 1,
+    reposts: 2,
+    diagnosis:
+      "This is his Facebook voice. Folks. Stay tuned. Goes live. The new promo video is the follow-through. Do not replace it with a press release.",
+  },
+  {
+    id: "fb-alphavox-design",
+    platform: "facebook",
+    title: "The difference is in the design — AlphaVox 11s",
+    body: `Hi, I'm AlphaVox. I turn thoughts into voice. Tap, type or point and I'll speak for you. One tap for needs. Two taps for feelings. Three for help. Welcome to the other side of silence. Ready when you are.`,
+    url: "https://www.facebook.com/TheChristmanAIProject/videos/4358151181176468/",
+    postedAt: "2025-11-01",
+    views: 0,
+    likes: 1,
+    reposts: 0,
+    diagnosis: "11 seconds. The product speaks. Recut this before writing new copy.",
   },
   {
     id: "li-nebius",

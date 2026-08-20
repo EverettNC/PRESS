@@ -51,7 +51,7 @@ export const PROOF = [
 export const PRODUCTS = [
   {
     name: "AlphaVox",
-    line: "Offline-first AAC. Voice for people who were never given one.",
+    line: "Doesn't just speak — reads the room. ToneScore: slower when you're upset, warm when something wonderful happens. Partial words count. Data stays on-device.",
     audience: "Nonverbal and neurodivergent people, families, clinicians",
   },
   {
@@ -97,11 +97,11 @@ export const VOICE_LAWS = [
   "One ask. One. A reply, a send-to-a-family, a watch, a submission. Not a pile.",
   "Quote-tweet and reply into rooms that already have oxygen. Broadcasting long original posts into an empty feed is how 21-view obituaries happen.",
   "Video is an asset, not a caption graveyard. The first line has to work with the sound off.",
-  "Facebook Chef.Ev (4.3k) is the warm room. The company page (~2k) is the mission room. LinkedIn is introductions. TikTok/Reels/Clapper are 12-second native clips. X is for walking into other people's crowds. Do not lead the week from X.",
+  "Facebook for this work is facebook.com/TheChristmanAIProject. Do not call that page Chef Ev. Chef Ev is the kitchen (Evercook71, chef_evs_journey). Different rooms.",
   "He is Chef Ev and he is the founder. The cooking school, Evercook71, and the AI stack are one person. Do not split him into a tech account and a leftover chef account.",
   "On Facebook he already said the line: the biggest company in the world just said hello to my country ass. That is the voice. Use it. Do not replace it with Inception Program theater.",
   "Do not put the childhood / nonverbal story in personal social posts. Interviews already do that. He said so. Personal posts are the work, the news, and one ask.",
-  "If origin age is ever required: about four, not six. Six is embellishing. Do not use six.",
+  "No asterisks, no bold, no bullet lists in anything that goes out under Everett's name. Clean human prose. That is a hard mandate.",
 ] as const;
 
 export const AUDIENCES = [

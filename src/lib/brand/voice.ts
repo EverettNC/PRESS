@@ -123,6 +123,15 @@ export function critiqueVoice(text: string): VoiceFlag[] {
       : "No childhood memoir.",
   });
 
+  const aiTell = /(\*\*|__|^\s*[-*•]\s)/m.test(raw);
+  flags.push({
+    ok: !aiTell,
+    code: "ai-tell",
+    note: aiTell
+      ? "Asterisks, bold, or bullets. Nothing he sends looks like that. Clean prose."
+      : "Clean prose. No AI-tell.",
+  });
+
   return flags;
 }
 

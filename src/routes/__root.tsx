@@ -13,7 +13,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { AppErrorComponent } from "@/lib/error-component";
 import appCss from "../styles.css?url";
 
-const APP_NAME = "The Christman AI Project";
+const APP_NAME = "Christman Command";
 
 function RootProviders() {
   const [queryClient] = useState(

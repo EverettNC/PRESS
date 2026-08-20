@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { CopyButton } from "@/components/copy-button";
+import { PushBar } from "@/components/push-bar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -177,6 +178,7 @@ function StudioPage() {
               <pre className="whitespace-pre-wrap rounded-lg border border-border bg-surface p-4 font-sans text-sm leading-relaxed">
                 {pack.body}
               </pre>
+              <PushBar text={pack.body} url={source?.url} platform={kind === "short" || kind === "reply" || kind === "thread" ? "x" : kind} />
               <div className="flex flex-wrap gap-2">
                 <CopyButton text={pack.body} />
                 <Button
