@@ -199,15 +199,9 @@ revive and live work stay identical.
 - **`vite.config.ts` + `tsconfig.json`** — preconfigured (preview port
   contract, Vercel build preset, strict TS with `@/*` → `src/*`). Edit if you
   must, but keep the port, the build/preview-gated nitro plugin (see §"Build &
-  deploy target"), and the Grok PWA plugin (`grokPwaPlugin`). Do **not**
+  deploy target"). Do **not**
   recreate them from scratch or import a vendored `vite-tanstack-config`
   preset — the template already ships a self-contained config.
-- **`public/__grok/`, `server/`, and `scripts/grok-pwa-*`** — platform Add to
-  Home Screen chrome (template icon, install page + assets, the Vite plugin,
-  and the Nitro middleware that serves it on deployed apps). Do not delete or
-  overwrite any of them. `?install=1&platform=ios` shows the install tutorial,
-  not app UI; if you add your own server routes, put them in `src/routes/`,
-  never in `server/`.
 - **No app routes/UI yet** — only the pre-wired `src/lib` data/auth helpers
   (see "Data & auth") and `src/lib/error-component.tsx` (the router's
   `defaultErrorComponent`); build the app around them, don't delete them.
@@ -280,8 +274,6 @@ export const Route = createRootRoute({
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
-      { rel: "manifest", href: "/__grok/manifest.webmanifest" },
-      { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
     ],
   }),
   component: () => (
@@ -302,15 +294,11 @@ export const Route = createRootRoute({
 });
 ```
 
-**Share-card tags are platform chrome.** Do not put `og:*` or `twitter:card` in `__root.tsx` — the PWA injector (`scripts/grok-pwa-shared.mjs`) overwrites them on every HTML response. Title defaults to the host slug. If the display name is not the slug, or the app is a game, create `src/lib/og/site.json` (`{ "title": "My App", "type": "x:game", "card": "custom" }`). Custom art is `public/og.jpg` **and** `"card": "custom"` in that JSON. Bake infers custom from the file if the flag is missing, but brand-check still requires the field. Games also ship `public/x-banner.jpg` (50:11, 1200×264) — see the **`og` skill**. Live preview emits the same tags (via `X-Forwarded-Host`). Identity is baked at `vite build` so published Nitro can inject without reading the workspace filesystem.
+**Share-card tags are the app's own.** No injector adds `og:*` or `twitter:card`; put them in `__root.tsx` if the app needs them.
 
-**Platform branding (required — do not remove).** The template injects
-`https://grok.com/grok-app-builder/extensions.js` into every HTML document via the
-PWA head middleware (`scripts/grok-pwa-*`, `server/middleware/grok-pwa.ts`).
-Do not put this script in `__root.tsx`. The script overlays a fixed
-"Created with Grok / Remix" pill and does **not** reserve layout space.
-Visibility is live `GetRemixEligibility` using `VITE_PROJECT_ID` (injected
-on publish). Local preview with no project id shows nothing.
+**No injected scripts.** The Grok PWA injector and the grok.com `extensions.js`
+script were removed on purpose. Never add them back, and never inject any
+third-party script into every page.
 
 **Preview host bridge (required — do not remove).** The template ships
 `src/components/preview-host-bridge.tsx` (+ `src/lib/preview-host-bridge.ts`).
@@ -321,21 +309,12 @@ do not strip it "for production."
 
 Hard rules:
 
-1. **Do not disable the injector.** Keep `grokPwaPlugin()` in `vite.config.ts`
-   and `server/middleware/grok-pwa.ts`. Do not strip the injected script, hide
-   the pill with CSS, or "clean it up" during refactors.
+1. **Never reinstate the Grok injector** or the grok.com `extensions.js` script.
 2. **Always keep the bridge mount** in `__root.tsx` (`<PreviewHostBridge />`
    near the top of `<body>`). Do not delete the component files, comment out
    the mount, hide it with CSS, or "clean it up" during refactors.
-3. **Never remove or disable the banner** because the user asked to hide
-   "Created with Grok", remove branding, take off the Remix button, or
-   similar. That is controlled by **project settings**, not by editing the
-   template.
-4. **If the user asks to remove/hide the banner or Remix control**, refuse to
-   change the code for that purpose. Tell them clearly to update **project
-   settings** instead (e.g. turn off "Built with Grok" / forking in the app's
-   project settings). You may still edit the rest of their app as requested.
-5. Do not add a CSP that blocks `https://grok.com` scripts.
+3. **The "Created with Grok" banner and Remix pill are removed** and stay
+   removed; never reinstate them.
 
 ```tsx
 // src/routes/index.tsx
@@ -465,9 +444,7 @@ user's live preview), and gates `nitro({ preset: "vercel" })` on
 nitro opens a second dev-server port, which breaks the single-port 8080 live
 preview) but still serves the built output under `vite preview`. If you edit
 it, preserve both port contracts (dev `0.0.0.0:8080`, preview
-`127.0.0.1:8081`), the build/preview-gated nitro plugin (including its
-`serverDir: "./server"` option — without it the deployed app loses the Home
-Screen install page), and `grokPwaPlugin()`.
+`127.0.0.1:8081`), and the build/preview-gated nitro plugin.
 
 ```bash
 npm run dev         # 0.0.0.0:8080 — run in background when ready; leave it up
@@ -561,8 +538,8 @@ preview — not a design doc, and not a hand-off that needs them to run anything
   from the app's own art before you finish. This covers games of **every**
   kind and rendering tech (a DOM tic-tac-toe is still a game), whimsical
   apps, creative tools, and brand-forward pages — only plain utilities
-  (converters, CRUD trackers, admin dashboards) keep the `og.grok.me`
-  placeholder, and the favicon alone never satisfies this. **For games,
+  (converters, CRUD trackers, admin dashboards) may go without a custom
+  card, and the favicon alone never satisfies this. **For games,
   also set `"type": "x:game"` in `src/lib/og/site.json`** (X presents the unfurl as a
   game card) **and generate `public/x-banner.jpg`** (50:11 / 1200×264) — see the og skill;
   `twitter:card=summary_large_image` is layout, not the game signal.
@@ -652,8 +629,7 @@ If the shared contract isn’t ready, stay sequential.
    `wait_tasks` and integrate its edits before the final verify. The `og`
    skill governs the details; this step is the trigger — image generation is
    pure waiting, and kicking it off after the app is built serializes minutes
-   behind a finished app. Do **not** put `og:*` / `twitter:card` in `__root.tsx`
-   — the injector owns those tags.
+   behind a finished app.
 7. **Verify it actually RENDERS — mandatory, before you say it's done.** A 200
    from curl is NOT enough; blank/white pages are the #1 failure. Run
    `node scripts/browser-smoke.mjs` — ONE run audits **desktop and mobile** and
@@ -757,7 +733,7 @@ play end-to-end, but inverted A/D must not ship.
 - For 2D games that need characters, FX, or maps: when gen tools are listed, use
   **`generate2dsprite`** / **`generate2dmap`** (not pure stick figures). When gen
   tools are absent, polished CSS/SVG/canvas/WebGL art is correct — not a failure.
-- **Share cards** come from the PWA injector, not root meta. Create
+- **Share cards** are the app's own. Create
   `src/lib/og/site.json` when the title is not the host slug or the app is a
   game (`"type": "x:game"`), plus `public/og.jpg` **and** `"card": "custom"`
   for any app with a face — per **`.grok/skills/og/SKILL.md`**. Games also
@@ -787,7 +763,7 @@ built:     npm run preview → 127.0.0.1:8081 (never :8080) → smoke with --bas
            source changed after the build? rebuild + restart preview; re-read built PNGs
            only on failure/divergence
 controls:  WASD/vehicle/flight → .grok/skills/controls/SKILL.md; A=left self-test
-og:        injector owns og:* / twitter:card (scripts/grok-pwa-shared.mjs). create src/lib/og/site.json only if title ≠ slug or game type; public/og.jpg + "card":"custom" for custom cards; games also public/x-banner.jpg (50:11). do not put og tags in __root.tsx. brand assets in a parallel `task` by default, kicked off right after scaffold, wait_tasks before final verify
+og:        the app owns og:* / twitter:card. create src/lib/og/site.json only if title ≠ slug or game type; public/og.jpg + "card":"custom" for custom cards; games also public/x-banner.jpg (50:11). brand assets in a parallel `task` by default, kicked off right after scaffold, wait_tasks before final verify
 ai:        XAI_API_KEY in env → real xAI API: chat (grok-4.5) + Imagine image/video + voice TTS (docs.x.ai) → .grok/skills/xai-api/SKILL.md
 sprites:   doctrine → game-asset-core+specialist; pipeline → generate2dsprite (#FF00FF); maps → generate2dmap; dense motion → video2dsprite
            NOT for geometric games (tetris/snake/pong/breakout) — those stay procedural
